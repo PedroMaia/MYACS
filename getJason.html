@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<meta charset=utf-8 />
+<title>JS Bin</title>
+<!--[if IE]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<style>
+  article, aside, figure, footer, header, hgroup, 
+  menu, nav, section { display: block; }
+</style>
+</head>
+<body>
+  <p id="hello">Alert box please!</p>
+  <script>
+  $(function(){
+  var json_uri = "https://spreadsheets.google.com/feeds/cells/0AnnAt5-CXyhXdFJaMjBaOE81VGpzY2ZtN3hLa3IwU1E/od6/public/basic?alt=json";
+  $.ajax({
+    type: "GET",
+    url: json_uri,
+    success: function(data){
+      alert("success");
+    }
+  });
+});
+  </script>
+</body>
+</html>
