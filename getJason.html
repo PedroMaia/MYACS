@@ -14,14 +14,24 @@
 </head>
 <body>
   <p id="hello">Alert box please!</p>
+  <p id="outputTitle">Text</p>
   <script>
   $(function(){
-  var json_uri = "https://spreadsheets.google.com/feeds/cells/0AnnAt5-CXyhXdFJaMjBaOE81VGpzY2ZtN3hLa3IwU1E/od6/public/basic?alt=json";
+  var json_uri = "https://spreadsheets.google.com/feeds/cells/0AnnAt5-CXyhXdFN2S19abGpuX2ZjWTZvd3BUaXFzbEE/od6/public/basic?alt=json";
   $.ajax({
     type: "GET",
     url: json_uri,
     success: function(data){
-      alert("success");
+    
+    var items = [];
+    var eventName = '';
+ for(var i = 0; i < data.feed.entry.length; i++){
+     eventName += data.feed.entry[i].content.$t+"</br>";
+  }
+  $('#outputTitle').append(eventName);        
+ 
+// document.write("LALALA:"+data.feed.entry[2].content.$t);
+
     }
   });
 });
