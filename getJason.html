@@ -2,6 +2,9 @@
 <html>
 <head>
 <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="https://dl.dropboxusercontent.com/u/8184796/raphael-min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
+<script src="https://dl.dropboxusercontent.com/u/8184796/sequence-diagram-min.js"></script>
 <meta charset=utf-8 />
 <title>JS Bin</title>
 <!--[if IE]>
@@ -14,7 +17,11 @@
 </head>
 <body>
   <p id="hello">Alert box please!</p>
-  <p id="outputTitle">Text</p>
+  <div id="diagram"></div>
+
+<p id="outputTitle">Text</p>
+
+
   <script>
   $(function(){
   var json_uri = "https://spreadsheets.google.com/feeds/cells/0AnnAt5-CXyhXdFN2S19abGpuX2ZjWTZvd3BUaXFzbEE/od6/public/basic?alt=json";
@@ -25,10 +32,38 @@
     
     var items = [];
     var eventName = '';
- for(var i = 0; i < data.feed.entry.length; i++){
-     eventName += data.feed.entry[i].content.$t+"</br>";
-  }
-  $('#outputTitle').append(eventName);        
+    var text='';
+    var digs='';
+    var ant='';
+
+ for(var i = 3; i < data.feed.entry.length; i++){
+  
+
+  text=data.feed.entry[i].title.$t;
+
+  if(text[0] == 'B'){
+ant=text[0];
+     eventName += data.feed.entry[i].content.$t+"B"+i+"</br>";
+     digs+="User->Sistem:"+data.feed.entry[i].content.$t+"\n";
+
+   }else
+      if(text[0] == 'C')
+      {
+        ant=text[0];
+        eventName += data.feed.entry[i].content.$t+"C"+i+"</br>";
+        digs+="Sistem->User:"+data.feed.entry[i].content.$t+"\n";
+      }
+  else
+    eventName += data.feed.entry[i].content.$t+"A"+i+"</br>"
+
+
+}
+
+
+  $('#outputTitle').append(eventName); 
+    var diagram = Diagram.parse(digs+""); 
+     
+    diagram.drawSVG("diagram", {theme: 'simple'});  
  
 // document.write("LALALA:"+data.feed.entry[2].content.$t);
 
