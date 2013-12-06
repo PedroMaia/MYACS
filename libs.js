@@ -1,34 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<script src="https://dl.dropboxusercontent.com/u/8184796/raphael-min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
-<script src="https://dl.dropboxusercontent.com/u/8184796/sequence-diagram-min.js"></script>
-<script src="libs.js"></script>
-<meta charset=utf-8 />
-<title>JS Bin</title>
-<!--[if IE]>
-  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
-<style>
-  article, aside, figure, footer, header, hgroup, 
-  menu, nav, section { display: block; }
-</style>
-</head>
-<body>
-  <p id="hello">Alert box please!</p>
-  <div id="diagram"></div>
-
-<p id="outputTitle">Text</p>
-
-
-  <script>
-/*
-
   $(function(){
 
-
+    
   var json_uri = "https://spreadsheets.google.com/feeds/cells/0AnnAt5-CXyhXdFN2S19abGpuX2ZjWTZvd3BUaXFzbEE/od6/public/basic?alt=json";
   $.ajax({
     type: "GET",
@@ -83,6 +55,3 @@
     }
   });
 });
-  </script>
-</body>
-</html>
